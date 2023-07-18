@@ -33,6 +33,8 @@ apiRoutes.get("/", async function (req, res, next) {
 
 apiRoutes.get("/languages", Controller.readLanguages)
 
+apiRoutes.get("/offerrequest", Controller.getOfferRequest)
+
 app.use(process.env.API_ROUTES_PATH, apiRoutes);
 
 const server = app.listen(process.env.PORT || 3002, function () {

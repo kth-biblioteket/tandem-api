@@ -12,6 +12,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.tandem-api.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX}`)"
+      - "traefik.http.routers.tandem-api.middlewares=tandem-api-stripprefix"
+      - "traefik.http.middlewares.tandem-api-stripprefix.stripprefix.prefixes=${PATHPREFIX}"
       - "traefik.http.routers.tandem-api.entrypoints=websecure"
       - "traefik.http.routers.tandem-api.tls=true"
       - "traefik.http.routers.tandem-api.tls.certresolver=myresolver"

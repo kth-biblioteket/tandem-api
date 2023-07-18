@@ -17,6 +17,38 @@ async function readLanguages(req, res) {
     }
 }
 
+async function getOfferRequest(req, res) {
+    try {
+        let html = 
+        `<h1 class="title">Speaks/Wants</h1>
+        <br>
+        <table width="100%" border="1"> 
+            <tr>
+                <td> Language </td>
+                <td align="center"> Speaks </td>
+                <td align="center"> Wants </td>                    
+            </tr>`;
+        let languages = await eventModel.readLanguages()
+        for(i=0 ; i < languages.length; i++) {
+            let howmanyspeak = await eventModel.readHowManySpeak(languages[i].id)
+            let howmanywant = await eventModel.readHowManyWant(languages[i].id)
+            html += 
+            `<tr>
+                <td><?php echo $langs['name_en'] ; ?></td>
+                <td align="center">${howmanyspeak[0]}</td>
+                <td align="center">${howmanywant[0]}</td>
+            </tr>`;
+        }
+        html += 
+        `</table>`
+
+        res.send(html)
+    } catch (err) {
+        res.send("error: " + err)
+    }
+}
+
 module.exports = {
-    readLanguages
+    readLanguages,
+    getOfferRequest
 };
