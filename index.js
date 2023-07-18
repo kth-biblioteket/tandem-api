@@ -1,6 +1,6 @@
 'use strict';
 
-require('dotenv').config({path:'bookingsystem-api.env'})
+require('dotenv').config({path:'tandem-api.env'})
 
 const jwt = require("jsonwebtoken");
 const VerifyToken = require('./VerifyToken');
