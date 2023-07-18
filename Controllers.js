@@ -31,7 +31,9 @@ async function getOfferRequest(req, res) {
         let languages = await eventModel.readLanguages()
         for(i=0 ; i < languages.length; i++) {
             let howmanyspeak = await eventModel.readHowManySpeak(languages[i].id)
+            console.log(howmanyspeak)
             let howmanywant = await eventModel.readHowManyWant(languages[i].id)
+            console.log(howmanywant)
             html += 
             `<tr>
                 <td><?php echo $langs['name_en'] ; ?></td>
