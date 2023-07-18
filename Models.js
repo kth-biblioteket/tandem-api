@@ -41,5 +41,7 @@ const readHowManyWant = (langid) => {
 };
 
 module.exports = {
-  readLanguages
+  readLanguages,
+  readHowManySpeak,
+  readHowManyWant
 };
