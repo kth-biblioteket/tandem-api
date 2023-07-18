@@ -37,8 +37,8 @@ async function getOfferRequest(req, res) {
             html += 
             `<tr>
                 <td><?php echo $langs['name_en'] ; ?></td>
-                <td align="center">${howmanyspeak[0]}</td>
-                <td align="center">${howmanywant[0]}</td>
+                <td align="center">${howmanyspeak[0].speaks}</td>
+                <td align="center">${howmanywant[0].wants}</td>
             </tr>`;
         }
         html += 

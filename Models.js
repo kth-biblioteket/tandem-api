@@ -16,7 +16,7 @@ const readLanguages = () => {
 
 const readHowManySpeak = (langid) => {
   return new Promise(function (resolve, reject) {
-      const sql = `SELECT COUNT(id) FROM tll_users WHERE (lang_have_1 = ? OR lang_have_1 = ?) AND last_login > current_date - interval 6 month `;
+      const sql = `SELECT COUNT(id) as speaks FROM tll_users WHERE (lang_have_1 = ? OR lang_have_1 = ?) AND last_login > current_date - interval 6 month `;
       database.db.query(database.mysql.format(sql,[langid,langid]),(err, result) => {
           if(err) {
               console.error(err);
@@ -29,7 +29,7 @@ const readHowManySpeak = (langid) => {
 
 const readHowManyWant = (langid) => {
   return new Promise(function (resolve, reject) {
-      const sql = `SELECT COUNT(id) FROM tll_users WHERE (lang_want_1 = ? OR lang_want_2 = ?) AND last_login > current_date - interval 6 month `;
+      const sql = `SELECT COUNT(id) as wants FROM tll_users WHERE (lang_want_1 = ? OR lang_want_2 = ?) AND last_login > current_date - interval 6 month `;
       database.db.query(database.mysql.format(sql,[langid,langid]),(err, result) => {
           if(err) {
               console.error(err);
