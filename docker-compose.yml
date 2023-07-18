@@ -1,0 +1,23 @@
+version: '3.6'
+
+services:
+  tandem-api:
+    container_name: tandem-api
+    image: ghcr.io/kth-biblioteket/tandem-api:${REPO_TYPE}
+    restart: always
+    environment:
+      - TZ=${TZ}
+    env_file:
+      - ./tandem-api.env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tandem-api.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX}`)"
+      - "traefik.http.routers.tandem-api.entrypoints=websecure"
+      - "traefik.http.routers.tandem-api.tls=true"
+      - "traefik.http.routers.tandem-api.tls.certresolver=myresolver"
+    networks:
+      - "apps-net"
+
+networks:
+  apps-net:
+    external: true
