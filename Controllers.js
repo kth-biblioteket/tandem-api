@@ -37,7 +37,7 @@ async function getOfferRequest(req, res) {
             console.log("after")
             console.log(new Date())
             html += 
-            `<tr>
+            `<tr ${howmanywant[0].wants > howmanyspeak[0].speaks ? "style='background-color:#DCE6EF'" : ""}>
                 <td>${languages[i].name_en}</td>
                 <td align="center">${howmanyspeak[0].speaks}</td>
                 <td align="center">${howmanywant[0].wants}</td>
