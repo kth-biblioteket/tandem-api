@@ -30,10 +30,12 @@ async function getOfferRequest(req, res) {
             </tr>`;
         let languages = await eventModel.readLanguages()
         for(i=0 ; i < languages.length; i++) {
+            console.log("before")
+            console.log(new Date())
             let howmanyspeak = await eventModel.readHowManySpeak(languages[i].id)
-            console.log(howmanyspeak)
             let howmanywant = await eventModel.readHowManyWant(languages[i].id)
-            console.log(howmanywant)
+            console.log("after")
+            console.log(new Date())
             html += 
             `<tr>
                 <td>${languages[i].name_en}</td>
